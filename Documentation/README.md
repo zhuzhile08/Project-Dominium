@@ -36,7 +36,7 @@ Here are a few examples:
 - **Guy C** Was texturing a new 3D model he was just provided with. He summarizes his rough progress on the texture and the steps left to completion, f.e. coloring, shading or polishing rough edges. He may also provide screenshots of the his work and the texture applied to its 3D model.
 - **Guy D** did nothing this week due to various reasons. *Time Constraints* or *Appointments* are reason enough and the person should not have to go into further detail.
 
-The weekly report will always be written and/or edited in following order by team members:
+The weekly report will always be written and/or edited in following order by team member names *(alphabetical)*:
 
 1. Finn Cibis
 2. Sokol Biba
