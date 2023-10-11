@@ -1,0 +1,76 @@
+# Project Dominium - Project Documentation
+
+## Table of contents
+
+1. [Introduction](#introduction)
+    1. [What and why?](#what-and-why)
+    2. [Structuring and Formatting](#structuring-and-formatting)
+2. [Project Documentation](#project-documentation)
+
+## Introduction
+
+### What and why?
+
+As Project Dominium is a school project which is made for the subject called **Project and Research** *(Projekt und Recherche)*, there are of course certain restrictions, conditions and also extra tasks surrounding the creation of such a project.
+
+As we almost have complete creative liberty in deciding the topic, timespan and format of our project, one of the few conditions include that we write a **Documentation**. Now, this is not a documentation in the sense of a documentation of the code, but a documentation of the process of creating, or in our case, developing this project. It should be on the more detailed end of things, and should go into most of the steps and resources we took and will use to achieve what we want to do, with it provided in an easily readable format, which will then get graded at the end of the project.
+
+This file is that documentation.
+
+### Structuring and Formatting
+
+The main part of this document (the documentation itself) will be written in a weekly manner, for everyone in the team, no matter if they have done anything substantial in contributing to the development of the game or not.
+
+The weekly report may be a short section of text, or a long and comprehensive description of all the weeks changes with screenshots and more, all depending on the amout of work that team member did that week.
+
+The weekly report **always** at least contain:
+
+- The name of the team member
+- A few sentences on their contributions that week, or a short reason why if they didn't contribute anything. Most often than not a more formulated version of the team members commit messages for that week.
+- **All** resources used that week, if not overlapping with the resources used in the last few weeks.
+
+Here are a few examples:
+
+- **Guy A** is developing a terrain generation algorithm. This may take multiple weeks. Hereby, the weekly report of the first few weeks will only consist of short sentences summarizing his current progress and status on the algorithm, maybe providing a few snippets of pseudocode here and there. But as soon as he is done, his next weekly report will consist of a detailed report on the workings and formulas involved in the algorithm, as well as a summary of all resources he used
+- **Guy B** did some minor bugfixes. He summarizes all bugs fixed and maybe some comments on the details of the bug. In some cases he may also provide screenshots or video if it is a f.e. graphical glitch.
+- **Guy C** Was texturing a new 3D model he was just provided with. He summarizes his rough progress on the texture and the steps left to completion, f.e. coloring, shading or polishing rough edges. He may also provide screenshots of the his work and the texture applied to its 3D model.
+- **Guy D** did nothing this week due to various reasons. *Time Constraints* or *Appointments* are reason enough and the person should not have to go into further detail.
+
+The weekly report will always be written and/or edited in following order by team members:
+
+1. Finn Cibis
+2. Sokol Biba
+3. Xintian Geng
+4. Zhile Zhu
+
+The title of each week should contain the number of that week in the entire scope of the project and the date of its **Monday**. The date will be written in **Day/Month/Year**. All school holidays and public holidays will be also counted towards the development of the project.
+
+Final editing to ensure that grammer, spelling and formatting stays same across all weeks across all team members will be done at the end of each week by Zhile Zhu.
+
+## Project Documentation
+
+### Week 1 (11/10/2023)
+
+#### Finn Cibis
+
+[//]: # (Text goes between seperator and name)
+
+---
+
+#### Sokol Biba
+
+[//]: # (Text goes between seperator and name)
+
+---
+
+#### Xintian Geng
+
+[//]: # (Text goes between seperator and name)
+
+---
+
+#### Zhile Zhu
+
+[//]: # (Text goes between seperator and name)
+
+---
