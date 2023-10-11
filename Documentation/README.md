@@ -51,6 +51,8 @@ Final editing to ensure that grammer, spelling and formatting stays same across 
 
 ### Week 1 (11/10/2023)
 
+![Alpha phase planning](Assets/AlphaPlanningBlackboard.png "Alpha phase planning on school blackboard")
+
 #### Finn Cibis
 
 [//]: # (Text goes between seperator and name)
@@ -71,6 +73,18 @@ Final editing to ensure that grammer, spelling and formatting stays same across 
 
 #### Zhile Zhu
 
-[//]: # (Text goes between seperator and name)
+As this is the first official week of development on the alpha stage, I will have the responsibility of developing the first stage of the project (as seen in the picture above).
+
+This is how the program should look like at the end of the week:
+
+1. Making a basic client-server program using LÖVE and luasocket.
+    1. There can be up to 16 clients at once on a server.
+    2. Clients can view each others username chosen before joining a server.
+2. Assigning and spawn a movable cube of random color to each client upon joining, and destroy the cube upon the client disconecting.
+    1. The cube can be moved with WSAD keys.
+    2. All clients can observe each others cubes on their screen moving about.
+3. *(Optional)* When the player, whose computer is running the server quits, the server starts another instance on another players computer and shuts down, upon which all players will join the new server instance.
+
+I will be making extensive use of the [LÖVE wiki](https://love2d.org/wiki/love) and the [official LÖVE tutorials](https://love2d.org/wiki/Category:Tutorials), especially the [networking chapter](https://love2d.org/wiki/Tutorial:Networking_with_UDP).
 
 ---
