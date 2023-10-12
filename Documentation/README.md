@@ -51,7 +51,7 @@ Final editing to ensure that grammer, spelling and formatting stays same across 
 
 ### Week 1 (11/10/2023)
 
-![Alpha phase planning](Assets/AlphaPlanningBlackboard.png "Alpha phase planning on school blackboard")
+![Alpha phase planning](Assets/AlphaPlanningBlackboard.png)
 
 #### Finn Cibis
 
@@ -80,11 +80,27 @@ This is how the program should look like at the end of the week:
 1. Making a basic client-server program using LÖVE and luasocket.
     1. There can be up to 16 clients at once on a server.
     2. Clients can view each others username chosen before joining a server.
-2. Assigning and spawn a movable cube of random color to each client upon joining, and destroy the cube upon the client disconecting.
-    1. The cube can be moved with WSAD keys.
-    2. All clients can observe each others cubes on their screen moving about.
-3. *(Optional)* When the player, whose computer is running the server quits, the server starts another instance on another players computer and shuts down, upon which all players will join the new server instance.
+2. Randomly generate a very simple and basic background using a tilemap.
+    1. The algorithm should be deterministic and seed-based.
+    2. It should pick from a list of tiles and radomly place them in a map of given size.
+    3. Render the tilemap.
+3. Assigning and spawn a movable character of random color to each client upon joining, and destroy the character upon the client disconecting.
+    1. The character can be moved with WSAD keys.
+    2. All clients can observe each others characters on their screen moving about.
+4. *(Optional)* When the player, whose computer is running the server quits, the server starts another instance on another players computer and shuts down, upon which all players will join the new server instance.
 
 I will be making extensive use of the [LÖVE wiki](https://love2d.org/wiki/love) and the [official LÖVE tutorials](https://love2d.org/wiki/Category:Tutorials), especially the [networking chapter](https://love2d.org/wiki/Tutorial:Networking_with_UDP).
+
+My first task would be to get a window with configuration up and running, which is pretty easy, so no need to go into further detail.
+
+Next up, I downloaded some assets from [Kenney](https://kenney.nl) for this prototype, and I found the [Tiny Battle](https://kenney.nl/assets/tiny-battle) asset pack to be quite fitting.
+
+Next up, I wrote a little code to enable me to generate a very simple tilemap, which works by inserting random elements of an array containing all available indexes into a tileset into a 2D array, and then rendering the array. There are a few smaller optimizations I made, but this is basically how this works. You can enter a seed and the width and height of the tilemap you want to generate, and then you can draw it.
+
+![Screenshot Tilemap Generation Basic](Assets/ScreenshotTilemapGenerationBasic.png)
+
+This is how it looks like. Of course, the tilemap does not fill the entire screen, but you can always customise its width and height, so not a big issue.
+
+The next step would be to implement [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse). For this, I will be using the video [Superpositions, Sudoku, the Wave Function Collapse algorithm](https://www.youtube.com/watch?v=2SuvO4Gi7uY) by [Martin Donald](https://www.youtube.com/@MartinDonald).
 
 ---
