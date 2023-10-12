@@ -103,4 +103,8 @@ This is how it looks like. Of course, the tilemap does not fill the entire scree
 
 The next step would be to implement [wave function collapse](https://en.wikipedia.org/wiki/Wave_function_collapse). For this, I will be using the video [Superpositions, Sudoku, the Wave Function Collapse algorithm](https://www.youtube.com/watch?v=2SuvO4Gi7uY) by [Martin Donald](https://www.youtube.com/@MartinDonald).
 
+First off, I made some minor modifications to the tileset so that it has some blank spaces left, which will come in handy later on when we will start generating multiple layers of tilemaps.
+
+Now it's time for wave function collapse.
+
 ---
