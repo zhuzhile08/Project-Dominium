@@ -1,4 +1,5 @@
 require "utility"
+local socket = require'socket'
 
 function love.load()
 	GraphicsGlobalScale = 2
@@ -11,5 +12,11 @@ function love.load()
 
 	initTilemapSystem()
 
-	Tilemap = generateTilemap(os.time(), 20, 30)
+	local s = false
+	while not s do
+		s, _ = pcall(function() 
+			print("reset")
+			Tilemap = generateTilemap(socket.gettime(), 30, 30)
+		end)
+	end
 end

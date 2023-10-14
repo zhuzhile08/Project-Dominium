@@ -22,3 +22,17 @@ function tprint (tbl, indent)
 	toprint = toprint .. string.rep(" ", indent-2) .. "}"
 	return toprint
 end -- hippity hoppity your code is now my property
+
+function tblcpy(tbl) -- thanks Bill
+	local newTbl = {}
+
+	for i, v in pairs(tbl) do
+		if type(v) == "table" then
+			newTbl[i] = tblcpy(v)
+		else
+			newTbl[i] = v
+		end
+	end
+
+	return newTbl
+end

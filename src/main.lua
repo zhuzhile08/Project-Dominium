@@ -1,6 +1,6 @@
 require "init"
-require "tilemap"
+require "Tilemap.tilemap"
 
 function love.draw()
-    drawTilemap(Tilemap)
+    drawTilemap(Tilemap, 1.5)
 end
