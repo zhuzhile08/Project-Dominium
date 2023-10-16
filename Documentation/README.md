@@ -55,19 +55,20 @@ Final editing to ensure that grammer, spelling and formatting stays same across 
 
 #### Finn Cibis
 
-[//]: # (Text goes between seperator and name)
+I continued programming a very basic game which I found online as an exercise, as well as doing some research, but nothing major was done to contribute to the project.
 
 ---
 
 #### Sokol Biba
 
-[//]: # (Text goes between seperator and name)
+Father gave me some work to do, so nothing for the project was done.
 
 ---
 
 #### Xintian Geng
 
-[//]: # (Text goes between seperator and name)
+
+Nothing was doe due to time constraints.
 
 ---
 
@@ -78,7 +79,7 @@ As this is the first official week of development on the alpha stage, I will hav
 This is how the program should look like at the end of the week:
 
 1. Making a basic client-server program using LÖVE and luasocket.
-    1. There can be up to 16 clients at once on a server.
+    1. There can be up to 4 clients at once on a server.
     2. Clients can view each others username chosen before joining a server.
 2. Randomly generate a very simple and basic background using a tilemap.
     1. The algorithm should be deterministic and seed-based.
@@ -107,4 +108,34 @@ First off, I made some minor modifications to the tileset so that it has some bl
 
 Now it's time for wave function collapse.
 
+This was suprisingly harder than I thought, taking me from wednesday to sunday to finish. But in the end, it turned out to be pretty alright, only having some minor issues, which are normal for a wfc-algorithm to have, like tedious inputs for tilesets and possible failstates, but it should work for this prototype.
+
 ---
+
+### Week 2 (16/10/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+
+---
+
+#### Zhile Zhu
+
+
+
+---
+
