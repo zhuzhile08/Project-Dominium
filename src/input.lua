@@ -12,14 +12,10 @@ function inputSystem.new(stateFunction)
 end
 
 function inputSystem:add(input)
-	self.inputs[input.name] = input
+	table.insert(self.inputs, input)
 end
 
-function inputSystem:remove(name)
-	self.inputs[name] = nil
-end
-
--- DeltaTime would be a typicsl example for args
+-- DeltaTime would be a typical example for args
 
 function inputSystem:update(args)
 	for _, v in pairs(self.inputs) do
@@ -29,6 +25,8 @@ function inputSystem:update(args)
 			v.run(args)
 		end
 	end
+
+	table.clear(self.inputs)
 end
 
 local basicInput = { }
