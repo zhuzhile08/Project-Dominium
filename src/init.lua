@@ -25,7 +25,7 @@ function love.load()
 	initTilemapSystem()
 
 	local i = 1
-	while i < 10 do
+	while i < 50 do
 		s, _ = pcall(function() 
 			i = i + 1
 			Tilemap = generateTilemap(os.time(), 30, 30)
