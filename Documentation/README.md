@@ -136,7 +136,11 @@ This was suprisingly harder than I thought, taking me from wednesday to sunday t
 
 #### Zhile Zhu
 
+So, now its time to implement a camera with a bounding box.
 
+First of all, I wrote a quick and dirty input manager class. It works by having a "state" function which takes a string as input and returns a boolean as output. Every object which wants to check for inputs has to add the keycodes to the respective input manager with the correct state function at the start of each frame.
+
+Speaking of objects, I also implemented a simple entity class, which will now be the basis of most things we will now make, including our camera.
 
 ---
 
