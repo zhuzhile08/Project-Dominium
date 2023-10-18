@@ -9,7 +9,4 @@ function entity.new(posX, posY, rot, scaleX, scaleY)
 	return self
 end
 
-function entity:update(dt) end
-function entity:physicsUpdate() end
-
 return entity

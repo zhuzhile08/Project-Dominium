@@ -6,44 +6,46 @@ local camera = { }
 camera.__index = camera
 
 function camera.new(posX, posY, rot, scaleX, scaleY, speed, boundingBox) 
-	speed = speed or 8
+	speed = speed or 200
 	boundingBox = boundingBox or vec2.new(math.huge, math.huge) -- upper-left edge of the bounding box is always 0, 0
-	vel = vel or 10
+	speed = speed or 10
 
 	local self = entity.new(posX, posY, rot, scaleX, scaleY)
 
 	self.boundingBox = boundingBox
-	self.vel = vel
+	self.speed = speed
 
-	self.up = key.new("up", function(dt)
-		self.transform:translate(0, -speed * dt)
-	end)
-
-	self.down = key.new("down", function(dt)
+	self.up = key.new("w", function(dt)
 		self.transform:translate(0, speed * dt)
 	end)
 
-	self.left = key.new("left", function(dt)
+	self.down = key.new("s", function(dt)
+		self.transform:translate(0, -speed * dt)
+	end)
+
+	self.left = key.new("a", function(dt)
+		self.transform:translate(speed * dt, 0)
+	end)
+
+	self.right = key.new("d", function(dt)
 		self.transform:translate(-speed * dt, 0)
 	end)
 
-	self.right = key.new("right", function(dt)
-		self.transform:translate(0, speed * dt, 0)
-	end)
-
 	function self:update(dt) 
-		KeyboardInputSystem:add(up)
-		KeyboardInputSystem:add(down)
-		KeyboardInputSystem:add(left)
-		KeyboardInputSystem:add(right)
-
-		love.graphics.pop()
-		love.graphics.applyTransform(self.transform)
-		love.graphics.push()
+		KeyboardInputSystem:add(self.up)
+		KeyboardInputSystem:add(self.down)
+		KeyboardInputSystem:add(self.left)
+		KeyboardInputSystem:add(self.right)
 	end
 
-	love.graphics.applyTransform(self.transform) -- hack to get update to work
-	love.graphics.push()
+	function self:beginDraw()
+		love.graphics.push()
+		love.graphics.applyTransform(self.transform)
+	end
+
+	function self:endDraw()
+		love.graphics.pop()
+	end
 
 	return self
 end
