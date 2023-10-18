@@ -110,6 +110,8 @@ Now it's time for wave function collapse.
 
 This was suprisingly harder than I thought, taking me from wednesday to sunday to finish. But in the end, it turned out to be pretty alright, only having some minor issues, which are normal for a wfc-algorithm to have, like tedious inputs for tilesets and possible failstates, but it should work for this prototype.
 
+![WaveFunctionCollapseTerrain](Assets/WaveFunctionCollapseTerrain.png)
+
 ---
 
 ### Week 2 (16/10/2023)
@@ -127,7 +129,6 @@ This was suprisingly harder than I thought, taking me from wednesday to sunday t
 ---
 
 #### Xintian Geng
-
 
 
 
