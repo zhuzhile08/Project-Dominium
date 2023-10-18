@@ -5,7 +5,7 @@ inputSystem.__index = inputSystem
 function inputSystem.new(stateFunction)
 	local self = setmetatable({ }, inputSystem)
 
-	self.stateFunction = state
+	self.stateFunction = stateFunction
 	self.inputs = { }
 
 	return self
@@ -19,14 +19,16 @@ end
 
 function inputSystem:update(args)
 	for _, v in pairs(self.inputs) do
-		v.reset()
-
-		if self.state(v.name) then
+		if self.stateFunction(v.name) then
 			v.run(args)
 		end
 	end
 
 	self.inputs = { }
+end
+
+function initInputSystems()
+	KeyboardInputSystem = inputSystem.new(love.keyboard.isDown)
 end
 
 local basicInput = { }
@@ -41,4 +43,4 @@ function basicInput.new(name, func)
 	return self
 end
 
-return inputSystem, basicInput
+return basicInput

@@ -1,6 +1,6 @@
 require "utility"
 require "Tilemap.tilemap"
-local inputSystem, _ = require "input"
+require "input"
 local camera = require "Entities.camera"
 
 function loadAssets()
@@ -9,12 +9,8 @@ function loadAssets()
 	WaterTilesetTexture = love.graphics.newImage("data/Image/WaterTileset.png")
 end
 
-function initInputSystems()
-	KeyboardInputSystem = inputSystem.new(love.keyboard.isDown)
-end
-
 function initGameComponents()
-	Camera = camera.new()
+	Camera = camera.new(0, 0, 0, GraphicsGlobalScale, GraphicsGlobalScale)
 end
 
 function love.load()
@@ -25,6 +21,7 @@ function love.load()
 
 	loadAssets()
 	initInputSystems()
+	initGameComponents()
 	initTilemapSystem()
 
 	local i = 1
