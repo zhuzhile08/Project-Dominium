@@ -16,7 +16,7 @@ function waveFunction.new(seed, width, height, prototypes)
 		self.output[x] = { }
 
 		for y = 1, height, 1 do
-			self.output[x][y] = tblcpy(prototypes)
+			self.output[x][y] = prototypes
 		end
 	end
 
@@ -31,7 +31,7 @@ function waveFunction:getLowestEntropyPos()
 	for x = 1, #self.output, 1 do -- push all prototypes into a table with a pair of entropy and index
 		for y = 1, #self.output[1], 1 do 
 			if #self.output[x][y] ~= 1 then 
-				table.insert(lowEntropies, { #self.output[x][y], ((y - 1) * #self.output[1] + x) })
+				table.insert(lowEntropies, { #self.output[x][y], ((y - 1) * #self.output + x) })
 			end
 			i = i + 1
 		end
@@ -78,20 +78,36 @@ function waveFunction:collapseAndPropagate(position)
 		return target
 	end
 
-	if posY > 1 then 
-		self.output[posX][posY - 1] = 
-		propagate(self.output[posX][posY][1].up, self.output[posX][posY - 1]) 
+	local function propagateFromPosition(x, y)
+		if y > 1 then 
+			self.output[x][y - 1] = 
+			propagate(self.output[x][y][1].up, self.output[x][y - 1]) 
+		end
+		if x < #self.output then 
+			self.output[x + 1][y] = 
+			propagate(self.output[x][y][1].right, self.output[x + 1][y]) 
+		end
+		if y < #self.output then 
+			self.output[x][y + 1] = 
+			propagate(self.output[x][y][1].down, self.output[x][y + 1]) 
+		end
+		if x > 1 then 
+			self.output[x - 1][y] = 
+			propagate(self.output[x][y][1].left, self.output[x - 1][y]) 
+		end
 	end
-	if posX < #self.output then self.output[posX + 1][posY] = propagate(self.output[posX][posY][1].right, self.output[posX + 1][posY]) end
-	if posY < #self.output then self.output[posX][posY + 1] = propagate(self.output[posX][posY][1].down, self.output[posX][posY + 1]) end
-	if posX > 1 then self.output[posX - 1][posY] = propagate(self.output[posX][posY][1].left, self.output[posX - 1][posY]) end
+
+	propagateFromPosition(posX, posY)
 end
 
 function waveFunction:collapse()
 	math.randomseed(self.seed)
 
+	local i = 1
+
 	while not self.collapsed do
 		self:collapseAndPropagate(self:getLowestEntropyPos())
+		i = i + 1
 	end
 
 	return self.output
