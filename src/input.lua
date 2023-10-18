@@ -26,13 +26,13 @@ function inputSystem:update(args)
 		end
 	end
 
-	table.clear(self.inputs)
+	self.inputs = { }
 end
 
 local basicInput = { }
 basicInput.__index = basicInput
 
-function inputSystem.new(name, func)
+function basicInput.new(name, func)
 	local self = setmetatable({ }, basicInput)
 
 	self.name = name
