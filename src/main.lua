@@ -6,6 +6,6 @@ function love.draw()
 end
 
 function love.update(dt)
-    -- love.graphics.applyTransform()
+    Camera:update(dt)
     KeyboardInputSystem:update(dt)
 end
