@@ -1,4 +1,4 @@
-function tprint (tbl, indent)
+function tprint(tbl, indent)
 	if not indent then indent = 0 end
 	local toprint = string.rep(" ", indent) .. "{\r\n"
 	indent = indent + 2 
@@ -35,4 +35,22 @@ function tblcpy(tbl) -- thanks Bill
 	end
 
 	return newTbl
+end
+
+function fprint(f, ...) -- explicit file print
+	f:write(...)
+	f:flush()
+end
+
+function fprint(...)
+	LogFile:write(...)
+	LogFile:flush()
+end
+
+function degToRad(deg)
+	return deg * math.pi / 180
+end
+
+function radToDeg(rad)
+	return rad * 180 / math.pi
 end
