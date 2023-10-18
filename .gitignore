@@ -39,6 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+# Project log file
+src/log.txt
+
 # MacOS specific files
 *.DS_Store
 
