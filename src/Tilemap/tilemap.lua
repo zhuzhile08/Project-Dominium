@@ -16,10 +16,10 @@ function initTilemapSystem()
 	GroundTilePrototypes = {
 		{
 			type = 1,
-			up = { 1, 2 },
-			right = { 1, 2 },
-			down = { 1, 2 },
-			left = { 1, 2 }
+			up = { 1, 2, 5, 7 },
+			right = { 1, 2, 5, 7 },
+			down = { 1, 2, 5, 7 },
+			left = { 1, 2, 5, 7 }
 		},
 		{
 			type = 2,
@@ -30,38 +30,38 @@ function initTilemapSystem()
 		},
 		{
 			type = 3,
-			up = { 2, 3, 4, 5 },
-			right = { 2, 3, 4, 5 },
-			down = { 2, 3, 4, 5 },
-			left = { 2, 3, 4, 5 }
+			up = { 2, 3, 4 },
+			right = { 2, 3, 4 },
+			down = { 2, 3, 4 },
+			left = { 2, 3, 4 }
 		},
 		{
 			type = 4,
-			up = { 2, 3, 4, 5 },
-			right = { 2, 3, 4, 5 },
-			down = { 2, 3, 4, 5 },
-			left = { 2, 3, 4, 5 }
+			up = { 2, 3, 4 },
+			right = { 2, 3, 4 },
+			down = { 2, 3, 4 },
+			left = { 2, 3, 4 }
 		},
 		{
 			type = 5,
-			up = { 2, 3, 4, 5, 7 },
-			right = { 2, 3, 4, 5, 7 },
-			down = { 2, 3, 4, 5, 7 },
-			left = { 2, 3, 4, 5, 7 }
+			up = { 1, 2, 3, 4, 5, 6 },
+			right = { 1, 2, 3, 4, 5, 6 },
+			down = { 1, 2, 3, 4, 5, 6 },
+			left = { 1, 2, 3, 4, 5, 6 }
 		},
 		{
 			type = 6,
-			up = { 4, 5, 6, 7 },
-			right = { 4, 5, 6, 7 },
-			down = { 4, 5, 6, 7 },
-			left = { 4, 5, 6, 7 }
+			up = { 5, 6 },
+			right = { 5, 6 },
+			down = { 5, 6 },
+			left = { 5, 6 }
 		},
 		{
 			type = 7,
-			up = { 1, 5, 6 },
-			right = { 1, 5, 6 },
-			down = { 1, 5, 6 },
-			left = { 1, 5, 6 }
+			up = { 1 },
+			right = { 1 },
+			down = { 1 },
+			left = { 1 }
 		}
 	}
 	
@@ -118,62 +118,48 @@ function initTilemapSystem()
 			right = { 1, 7, 12, 24 },
 			down = { 1, 2, 22, 24 },
 			left = { 2, 8, 12, 24 }
+		},
+		{
+			type = 24,
+			up = { 7, 8, 22, 24 },
+			right = { 1, 7, 12, 24 },
+			down = { 1, 2, 22, 24 },
+			left = { 2, 8, 12, 24 }
 		}
 	}
 end
 
+function tilemapToSpriteBatch(texture, quads, tilemap)
+	local batch = love.graphics.newSpriteBatch(texture, #tilemap * #tilemap[1])
+
+	fprint(tprint(tilemap))
+
+	for x = 1, #tilemap, 1 do
+		for y = 1, #tilemap[1], 1 do
+			batch:add(quads[tilemap[x][y][1].type], 16 * x, 16 * y)
+		end
+	end
+	
+	batch:flush()
+
+	return batch
+end
+
 function generateTilemap(seed, width, height) 
-	local tilemap = {}
+	local tilemap = { }
 
 	local generator = waveFunction.new(seed, width, height, GroundTilePrototypes)
+	local groundTilemap = generator:collapse()
 
-	tilemap[1] = generator:collapse()
-
-	-- generator = waveFunction.new(seed, width, height, WaterTilePrototypes)
-
-	-- tilemap[2] = generator:collapse()
+	tilemap[1] = tilemapToSpriteBatch(GroundTilesetTexture, GroundTileQuads, groundTilemap)
 
 	math.randomseed(os.time()) -- reset random
 
 	return tilemap
 end
 
-function drawTilemap(tilemap, scaleFactor)
+function drawTilemap(tilemapBatch, scaleFactor)
 	scaleFactor = scaleFactor or 1
 
-	for x = 1, #tilemap[1], 1 do
-		for y = 1, #tilemap[1][1], 1 do
-			love.graphics.draw(
-				GroundTilesetTexture, 
-				GroundTileQuads[tilemap[1][x][y][1].type], 
-				(x - 1) * 16 * scaleFactor, 
-				(y - 1) * 16 * scaleFactor, 
-				0, 
-				scaleFactor, 
-				scaleFactor, 
-				0, 
-				0
-			)
-		end
-	end
-
-	--[[
-
-	for x = 1, #tilemap[2], 1 do
-		for y = 1, #tilemap[2][1], 1 do
-			love.graphics.draw(
-				WaterTilesetTexture, 
-				WaterTileQuads[tilemap[2][x][y][1].type], 
-				(x - 1) * 16 * scaleFactor * GraphicsGlobalScale, 
-				(y - 1) * 16 * scaleFactor * GraphicsGlobalScale, 
-				0, 
-				scaleFactor * GraphicsGlobalScale, 
-				scaleFactor * GraphicsGlobalScale, 
-				0, 
-				0
-			)
-		end
-	end
-
-	--]]
+	love.graphics.draw(tilemapBatch[1], 0, 0, 0, scaleFactor, scaleFactor, 0, 0)
 end

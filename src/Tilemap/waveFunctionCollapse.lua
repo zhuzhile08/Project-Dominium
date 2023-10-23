@@ -78,26 +78,66 @@ function waveFunction:collapseAndPropagate(position)
 		return target
 	end
 
-	local function propagateFromPosition(x, y)
+	local function propagateFromPosition(x, y, queue)
+		local prevSize = 0
+
 		if y > 1 then 
-			self.output[x][y - 1] = 
-			propagate(self.output[x][y][1].up, self.output[x][y - 1]) 
+			prevSize = #self.output[x][y - 1]
+
+			self.output[x][y - 1] = propagate(
+				self.output[x][y][1].up, 
+				self.output[x][y - 1]
+			) 
+
+			if prevSize ~= #self.output[x][y - 1] then
+				table.insert(queue, { x, y - 1 })
+			end
 		end
 		if x < #self.output then 
-			self.output[x + 1][y] = 
-			propagate(self.output[x][y][1].right, self.output[x + 1][y]) 
+			prevSize = #self.output[x + 1][y]
+
+			self.output[x + 1][y] = propagate(
+				self.output[x][y][1].right, 
+				self.output[x + 1][y]
+			) 
+
+			if prevSize ~= #self.output[x + 1][y] then
+				table.insert(queue, { x + 1, y })
+			end
 		end
 		if y < #self.output then 
-			self.output[x][y + 1] = 
-			propagate(self.output[x][y][1].down, self.output[x][y + 1]) 
+			prevSize = #self.output[x][y + 1]
+
+			self.output[x][y + 1] = propagate(
+				self.output[x][y][1].down, 
+				self.output[x][y + 1]
+			) 
+
+			if prevSize ~= #self.output[x][y + 1] then
+				table.insert(queue, { x, y + 1 })
+			end
 		end
 		if x > 1 then 
-			self.output[x - 1][y] = 
-			propagate(self.output[x][y][1].left, self.output[x - 1][y]) 
+			prevSize = #self.output[x - 1][y]
+
+			self.output[x - 1][y] = propagate(
+				self.output[x][y][1].left, 
+				self.output[x - 1][y]
+			) 
+
+			if prevSize ~= #self.output[x - 1][y] then
+				table.insert(queue, { x - 1, y })
+			end
 		end
 	end
 
-	propagateFromPosition(posX, posY)
+	local positionQueue = { {posX, posY} }
+
+	while #positionQueue ~= 0 do
+		local head = table.remove(positionQueue, #positionQueue)
+
+		propagateFromPosition(head[1], head[2], positionQueue)
+	end
 end
 
 function waveFunction:collapse()
