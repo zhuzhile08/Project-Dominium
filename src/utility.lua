@@ -54,3 +54,7 @@ end
 function radToDeg(rad)
 	return rad * 180 / math.pi
 end
+
+function clamp(v, l, u)
+    return math.max(l, math.min(u, v))
+end
