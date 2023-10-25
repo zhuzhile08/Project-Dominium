@@ -1,46 +1,48 @@
+require "utility"
+
 local entity = require "Entities.entity"
 local vec2 = require "vector2"
-local key = require "input"
 
 local camera = { }
 camera.__index = camera
 
-function camera.new(posX, posY, rot, scaleX, scaleY, speed, boundingBox) 
-	speed = speed or 200
-	boundingBox = boundingBox or vec2.new(math.huge, math.huge) -- upper-left edge of the bounding box is always 0, 0
-	speed = speed or 10
+function camera.new(posX, posY, rot, scaleX, scaleY, boundingBox) 
+	boundingBox = boundingBox or vec2.new(-TilemapWidth * 16, -TilemapHeight * 16)
 
 	local self = entity.new(posX, posY, rot, scaleX, scaleY)
 
+	self.target = entity.new(0, 0, 0, 0, 0)
 	self.boundingBox = boundingBox
-	self.speed = speed
-
-	self.up = key.new("w", function(dt)
-		self.transform:translate(0, speed * dt)
-	end)
-
-	self.down = key.new("s", function(dt)
-		self.transform:translate(0, -speed * dt)
-	end)
-
-	self.left = key.new("a", function(dt)
-		self.transform:translate(speed * dt, 0)
-	end)
-
-	self.right = key.new("d", function(dt)
-		self.transform:translate(-speed * dt, 0)
-	end)
 
 	function self:update(dt) 
-		KeyboardInputSystem:add(self.up)
-		KeyboardInputSystem:add(self.down)
-		KeyboardInputSystem:add(self.left)
-		KeyboardInputSystem:add(self.right)
+		self.translation.x = math.floor(clamp(
+			self.target.translation.x, 
+			self.boundingBox.x * self.scale.x + love.graphics.getWidth(), 
+			0
+		))
+		self.translation.y = math.floor(clamp(
+			self.target.translation.y,
+			self.boundingBox.y * self.scale.y + love.graphics.getHeight(),
+			0)
+		)
+		self.rotation = math.floor(self.target.rotation)
+
+		fprint(self.translation.x, " ", self.translation.y, "\n")
+	end
+
+	function self:target(target)
+		self.target = target
+	end
+
+	function self:screenShake(translateIntensity, rotationIntensity, scaleIntensity)
+
 	end
 
 	function self:beginDraw()
 		love.graphics.push()
-		love.graphics.applyTransform(self.transform)
+		love.graphics.translate(self.translation.x, self.translation.y)
+		love.graphics.rotate(self.rotation)
+		love.graphics.scale(self.scale.x, self.scale.y)
 	end
 
 	function self:endDraw()
