@@ -1,7 +1,10 @@
 require "utility"
 require "Tilemap.tilemap"
 require "input"
+
+local vec2 = require "vector2"
 local camera = require "Entities.camera"
+local player = require "Entities.player"
 
 function loadAssets()
 	love.graphics.setDefaultFilter("nearest", "nearest")
@@ -11,10 +14,16 @@ end
 
 function initGameComponents()
 	Camera = camera.new(0, 0, 0, GraphicsGlobalScale, GraphicsGlobalScale)
+	Player = player.new(0, 0, 0, 1, 1, 300)
+
+	Camera:target(Player)
 end
 
 function love.load()
 	GraphicsGlobalScale = 2
+
+	TilemapWidth = 50
+	TilemapHeight = 50
 
 	-- log file
 	LogFile = assert(io.open("src/log.txt", "w"))
@@ -36,5 +45,5 @@ function love.load()
 
 	--]]
 
-	Tilemap = generateTilemap(os.time(), 50, 50)
+	Tilemap = generateTilemap(os.time(), TilemapWidth, TilemapHeight)
 end
