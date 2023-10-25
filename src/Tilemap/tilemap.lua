@@ -146,11 +146,9 @@ end
 function tilemapToSpriteBatch(texture, quads, tilemap)
 	local batch = love.graphics.newSpriteBatch(texture, #tilemap * #tilemap[1])
 
-	fprint(tprint(tilemap))
-
 	for x = 1, #tilemap, 1 do
 		for y = 1, #tilemap[1], 1 do
-			batch:add(quads[tilemap[x][y][1].type], 16 * x, 16 * y)
+			batch:add(quads[tilemap[x][y][1].type], 16 * x - 16, 16 * y - 16)
 		end
 	end
 	
@@ -172,8 +170,8 @@ function generateTilemap(seed, width, height)
 	return tilemap
 end
 
-function drawTilemap(tilemapBatch, scaleFactor)
+function drawTilemap(tilemapBatch)
 	scaleFactor = scaleFactor or 1
 
-	love.graphics.draw(tilemapBatch[1], 0, 0, 0, scaleFactor, scaleFactor, 0, 0)
+	love.graphics.draw(tilemapBatch[1], 0, 0, 0, 1, 1, 0, 0)
 end
