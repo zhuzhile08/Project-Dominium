@@ -22,7 +22,7 @@ vec2.__mul = function(a, b)
 end
 
 vec2.__div = function(a, b)
-    if type(a) == "table" and type(b) == "table" then\
+    if type(a) == "table" and type(b) == "table" then
         return vec2.new(a.x / b.x, a.y / b.y)
     elseif type(a) == "number" then
         return vec2.new(b.x / a, b.y / a)
