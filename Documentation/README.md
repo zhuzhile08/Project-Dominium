@@ -116,6 +116,8 @@ This was suprisingly harder than I thought, taking me from wednesday to sunday t
 
 ### Week 2 (16/10/2023)
 
+![CountriesPlanningBlackboard](Assets/CountriesPlanningBlackboard.png)
+
 #### Finn Cibis
 
 
@@ -136,11 +138,364 @@ This was suprisingly harder than I thought, taking me from wednesday to sunday t
 
 #### Zhile Zhu
 
-So, now its time to implement a camera with a bounding box.
+In the project and research lession itself, we discussed matters of our tasks and roles. A project where in the first half, only one or two people have something to do, is a guaranteed sign of bad management and therefore failure in the future, which we (and I, as the de-facto project lead) want to avoid.
+
+Programming is not everybodys bread and butter, that I understand. I can't possibly just throw everybody into the programmer role and have everybody working on the same cluttered project at once, especially since we're not professionals. 
+
+But, there is one role that I haven't filled out, which is research itself. Since we're making a game based on historic activities and events, I think that historical accuracy is something that we should put extra care into. So, I entrusted this task to Xintian and Sokol. Sokol will now mostly focus his time on researching the architecture, military and culture of the nations we've decided upon (see picture on top). Xintian will also do a small part of the research, especially on the asian nations, but most of his time will now be focused on sketching designs of houses, institutions, characters, weaponery and armory based on his and Sokols research (see Sokol and Xintian's sections).
+
+So, back to programming. Now its time to implement a camera with a bounding box.
 
 First of all, I wrote a quick and dirty input manager class. It works by having a "state" function which takes a string as input and returns a boolean as output. Every object which wants to check for inputs has to add the keycodes to the respective input manager with the correct state function at the start of each frame.
 
 Speaking of objects, I also implemented a simple entity class, which will now be the basis of most things we will now make, including our camera.
 
+The camera was simple and quick work, I used the tutorials from [this website](https://ebens.me/post/cameras-in-love2d-part-1-the-basics), and after a litte while, the camera was done.
+
+This week was a bit less productive, but we still managed to do some good work and find a balance, where everybody has found something they can do and are interested in. I'd call this week a great success.
+
 ---
 
+### Week 3 (23/10/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+I've planned this week to be a bit more productive. So let's get straight into it.
+
+In the project and research lession itself, we mostly did our own work. I was investing my time mostly in just patching small parts of the WFC algorithm, but that wasn't going anywhere, so I called it good enougth and just optimized the tile rendering with [this tutorial](https://love2d.org/wiki/Tutorial:Efficient_Tile-based_Scrolling) from the Löve2D wiki. I also layed some of the basic groundwork for a player class, but did not come to implement it.
+
+Now with a player class, I will now check the inputs in the player class and just have the camera target an object that can be assigned at will, in our case, the player. 
+
+Now that the camera is properly clamping and moving with the player, I'll now implement the player itself with the animations and everything else.
+
+---
+
+### Week 4 (30/10/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 5 (6/11/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 6 (13/11/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 7 (20/11/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 8 (27/11/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 9 (4/12/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 10 (4/12/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 11 (11/12/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 12 (18/12/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 13 (25/12/2023)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 14 (1/1/2024)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 15 (8/1/2024)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
+
+### Week 16 (15/1/2024)
+
+#### Finn Cibis
+
+
+
+---
+
+#### Sokol Biba
+
+
+
+---
+
+#### Xintian Geng
+
+
+
+---
+
+#### Zhile Zhu
+
+---
