@@ -57,8 +57,8 @@ function vec2:magnitude()
    return math.sqrt((self.x^2) + (self.y^2))
 end
 
-function vec2:unit()
-   local d = self.magnitude
+function vec2:normalize()
+   local d = self:magnitude()
    return self / vec2.new(d, d)
 end
 
