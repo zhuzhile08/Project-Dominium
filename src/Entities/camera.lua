@@ -15,19 +15,16 @@ function camera.new(posX, posY, rot, scaleX, scaleY, boundingBox)
 	self.boundingBox = boundingBox
 
 	function self:update(dt) 
-		self.translation.x = math.floor(clamp(
-			self.target.translation.x, 
+		self.translation.x = clamp(
+			-self.target.translation.x * GraphicsGlobalScale + love.graphics.getWidth() / 2, 
 			self.boundingBox.x * self.scale.x + love.graphics.getWidth(), 
 			0
-		))
-		self.translation.y = math.floor(clamp(
-			self.target.translation.y,
-			self.boundingBox.y * self.scale.y + love.graphics.getHeight(),
-			0)
 		)
-		self.rotation = math.floor(self.target.rotation)
-
-		fprint(self.translation.x, " ", self.translation.y, "\n")
+		self.translation.y = clamp(
+			-self.target.translation.y * GraphicsGlobalScale + love.graphics.getHeight() / 2,
+			self.boundingBox.y * self.scale.y + love.graphics.getHeight(),
+			0
+		)
 	end
 
 	function self:target(target)
