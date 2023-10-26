@@ -1,18 +1,6 @@
 local waveFunction = require "Tilemap.waveFunctionCollapse"
 
 function initTilemapSystem()
-	GroundTileQuads = {} -- ground tiles
-
-	for x = 1, GroundTilesetTexture:getWidth() * GroundTilesetTexture:getHeight() / 256, 1 do
-		GroundTileQuads[x] = love.graphics.newQuad(((x - 1) % (GroundTilesetTexture:getWidth() / 16)) * 16, math.floor((x - 1) / (GroundTilesetTexture:getWidth() / 16)) * 16, 16, 16, GroundTilesetTexture:getWidth(), GroundTilesetTexture:getHeight())
-	end
-
-	WaterTileQuads = {} -- water tiles
-
-	for x = 1, WaterTilesetTexture:getWidth() * WaterTilesetTexture:getHeight() / 256, 1 do
-		WaterTileQuads[x] = love.graphics.newQuad(((x - 1) % (WaterTilesetTexture:getWidth() / 16)) * 16, math.floor((x - 1) / (WaterTilesetTexture:getWidth() / 16)) * 16, 16, 16, WaterTilesetTexture:getWidth(), WaterTilesetTexture:getHeight())
-	end
-
 	GroundTilePrototypes = {
 		{
 			type = 1,
@@ -163,7 +151,7 @@ function generateTilemap(seed, width, height)
 	local generator = waveFunction.new(seed, width, height, GroundTilePrototypes)
 	local groundTilemap = generator:collapse()
 
-	tilemap[1] = tilemapToSpriteBatch(GroundTilesetTexture, GroundTileQuads, groundTilemap)
+	tilemap[1] = tilemapToSpriteBatch(GroundTilesetTexture, GroundTilesetQuads, groundTilemap)
 
 	math.randomseed(os.time()) -- reset random
 
