@@ -31,7 +31,7 @@ function waveFunction:getLowestEntropyPos()
 	for x = 1, #self.output, 1 do -- push all prototypes into a table with a pair of entropy and index
 		for y = 1, #self.output[1], 1 do 
 			if #self.output[x][y] ~= 1 then 
-				table.insert(lowEntropies, { #self.output[x][y], ((y - 1) * #self.output + x) })
+				table.insert(lowEntropies, { #self.output[x][y], { x, y } })
 			end
 			i = i + 1
 		end
@@ -55,8 +55,8 @@ function waveFunction:getLowestEntropyPos()
 end
 
 function waveFunction:collapseAndPropagate(position)
-	local posX = (position - 1) % self.width + 1
-	local posY = math.floor((position - 1) / self.width) + 1
+	local posX = position[1]
+	local posY = position[2]
 
 	self.output[posX][posY] = { self.output[posX][posY][math.random(#self.output[posX][posY])] } -- pick a random tile from the prototypes
 
