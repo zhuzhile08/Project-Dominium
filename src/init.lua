@@ -4,6 +4,7 @@ require "Tilemap.tilemap"
 local vec2 = require "vector2"
 local camera = require "Entities.camera"
 local player = require "Entities.player"
+local solider = require "Entities.solider"
 
 function loadAssets()
 	local function generateQuads(texture, cellSize)
@@ -37,16 +38,22 @@ end
 
 function initGameComponents()
 	Camera = camera.new(0, 0, 0, GraphicsGlobalScale, GraphicsGlobalScale)
-	Player = player.new(0, 0, 0, 1, 1, SpriteSheetQuads[87], 75)
+	Player = player.new(8, 8, 0, 1, 1, SpriteSheetQuads[77], 75)
+	Solider = solider.new(8, 8, 0, 1, 1, SpriteSheetQuads[87], 65, 400)
+	Solider1 = solider.new(8, 8, 0, 1, 1, SpriteSheetQuads[87], 65, 400)
+	Solider2 = solider.new(8, 8, 0, 1, 1, SpriteSheetQuads[87], 65, 400)
 
 	Camera:target(Player)
+	Solider:target(Player)
+	Solider1:target(Solider)
+	Solider2:target(Solider1)
 end
 
 function love.load()
 	GraphicsGlobalScale = 3
 
-	TilemapWidth = 80
-	TilemapHeight = 80
+	TilemapWidth = 50
+	TilemapHeight = 50
 
 	love.graphics.setDefaultFilter("nearest", "nearest")
 
