@@ -51,8 +51,6 @@ function player.new(posX, posY, rot, scaleX, scaleY, quad, speed)
 
 		self.translation.x = self.translation.x + dx * dt * self.speed
 		self.translation.y = self.translation.y + dy * dt * self.speed
-
-		fprint(self.translation.x, "\n")
     end
 
     return self
